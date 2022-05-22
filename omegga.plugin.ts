@@ -15,12 +15,14 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
   }
 
   async init() {
-    // Write your plugin!
     this.omegga.on(
       'interact',
       async ({ player, position, message }) => {
         if (message !== 'loot') return;
+		const match = brick_name.match(/^2x Cube$/);
+        if (!match) return;
         Omegga.middlePrint(player.name,`You looted`);
+		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
       });
 
     return {};
