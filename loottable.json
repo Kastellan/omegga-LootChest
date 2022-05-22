@@ -1,0 +1,31 @@
+{
+	"AssaultRifle":
+	{
+		"id": "AssaultRifle",
+		"name": "Assault Rifle",
+		"pickup": "BP_ItemPickup_AssaultRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"AutoShotgun":
+	{
+		"id": "AutoShotgun",
+		"name": "Auto Shotgun",
+		"pickup": "BP_ItemPickup_AutoShotgun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+
+}
+	
