@@ -17,7 +17,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
   async init() {
     this.omegga.on(
       'interact',
-      async ({ player, position, message }) => {
+      async ({ player, position, brick_name, message }) => {
         if (message !== 'loot') return;
 		const match = brick_name.match(/^2x Cube$/);
         if (!match) return;
