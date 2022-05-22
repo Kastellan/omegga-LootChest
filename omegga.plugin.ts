@@ -15,6 +15,15 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
   }
 
   async init() {
+	// Subscribe to the death events plugin
+    const minigameEvents = await this.omegga.getPlugin('minigameevents')
+    if (minigameEvents) {
+      console.log('subscribing to minigameevents')
+      minigameEvents.emitPlugin('subscribe')
+    } else {
+      throw Error("minigameevents plugin is required for this to plugin")
+    }
+	
     this.omegga.on(
       'interact',
       async ({ player, position, brick_name, message }) => {
@@ -23,12 +32,35 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         if (!match) return;
         Omegga.middlePrint(player.name,`You looted`);
 		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
+		
+		//save the location of this box
+		//load item spawn brick
       });
 
     return {};
   }
 
   async stop() {
-    // Anything that needs to be cleaned up...
+    // Unsubscribe to the death events plugin
+    const minigameEvents = await this.omegga.getPlugin('minigameevents')
+    if (minigameEvents) {
+      console.log('unsubscribing from minigameevents')
+      minigameEvents.emitPlugin('unsubscribe')
+    } else {
+      throw Error("minigameevents plugin is required for this to plugin")
+    }
+  }
+  
+  async pluginEvent(event: string, from: string, ...args: any[]) {
+    console.log(event, from, args)
+    if (event === 'roundend') {
+      const [{ name }] = args;
+      this.omegga.broadcast(`${name} has ended.`)
+    }
+
+    if (event === 'roundchange') {
+      const [{ name }] = args;
+      this.omegga.broadcast(`${name} has reset.`);
+    }
   }
 }
