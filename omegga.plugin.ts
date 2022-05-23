@@ -66,8 +66,21 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 					BCD_ItemSpawn: {
 						PickupClass: 'BP_ItemPickup_AssaultRifle',
 						bPickupEnabled: true,
-						PickupRespawnTime: 0,
-						PickupScale: 0.8,
+						bPickupRespawnOnMinigameReset: true,
+					    PickupMinigameResetRespawnDelay: 0,
+					    bPickupAutoDisableOnPickup: true,
+					    PickupRespawnTime: 0,
+					    PickupOffsetDirection: 4,
+					    PickupOffsetDistance: 0.5,
+					    PickupRotation: [0,0,0],
+					    PickupScale: 0.8,
+					    bPickupAnimationEnabled: true,
+						PickupAnimationAxis: 2,
+						bPickupAnimationAxisLocal: false,
+						PickupSpinSpeed: 0.2,
+						PickupBobSpeed: 0.1,
+						PickupBobHeight: 0.4,
+						PickupAnimationPhase: 0,
 					}
 			    }              
 			}]
