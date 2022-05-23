@@ -385,9 +385,9 @@
 		"chanceWeight": 120,
 		"scale":
 		{
-			"common": 0.8,
-			"rare": 1.0,
-			"legendary": 1.2
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2
 		}
 	},
 	
