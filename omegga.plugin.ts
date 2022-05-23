@@ -49,7 +49,7 @@ const lootBrick: WriteSaveObject = {
 				bMatchBrickShape: false,
 			    Brightness: 80,
 			    Radius: 5,
-			    Color: [0,0,0],
+			    Color: 0,
 			    bUseBrickColor: true,
 			    bCastShadows: false
 			}
