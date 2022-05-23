@@ -122,9 +122,9 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
             ],
             brick_owners: [publicUser],
             bricks: [{
-                size: [10, 10, 4],
+                size: [10, 10, 2],
                 color: [25, 25, 25],
-                position: [0,0,-2],
+                position: [0,0,-4],
 			    components: {
 					BCD_ItemSpawn: {
 						PickupClass: itemIndex[randomIndex].pickup,
