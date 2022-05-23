@@ -32,9 +32,9 @@ const lootBrick: WriteSaveObject = {
 		position: [0,0,0],
 		components: {
 			BCD_Interact: {
-			bPlayInteractSound: true,
-			Message: "",
-			ConsoleTag: `loot`     
+				bPlayInteractSound: true,
+				Message: "",
+				ConsoleTag: `loot`     
 			}
 		}
 	}]
@@ -179,10 +179,18 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 	  //change all the opened boxes back to closed boxes
 	  if (openBoxLocations.length != 0) {
 		  this.omegga.broadcast(`Who opened all these boxes?`)
-		  for (let i in openBoxLocations) {
-			  console.log(`box at ${openBoxLocations[i][0]}, ${openBoxLocations[i][1]}, ${openBoxLocations[i][2]}`);
-			  Omegga.writeln(`Bricks.ClearRegion ${openBoxLocations[i][0]} ${openBoxLocations[i][1]} ${openBoxLocations[i][2]} 10 10 10`);
-			  let inputData = {offX: openBoxLocations[i][0], offY: openBoxLocations[i][1], offZ: openBoxLocations[i][3], quiet: true, correctPalette: true, correctCustom: false};
+		  for (let i in openBoxLocations) { //delete the boxes
+			  let posX = openBoxLocations[i][0];
+			  let posY = openBoxLocations[i][1];
+			  let posZ = openBoxLocations[i][2];
+			  console.log(`box at ${posX}, ${posY}, ${posZ}`);
+			  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
+		  }
+		  for (let i in openBoxLocations) { //regenerate the boxes
+			  let posX = openBoxLocations[i][0];
+			  let posY = openBoxLocations[i][1];
+			  let posZ = openBoxLocations[i][2];
+			  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
 			  Omegga.loadSaveData(lootBrick,inputData);
 		  }
 		  openBoxLocations.length = 0;
