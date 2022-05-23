@@ -59,16 +59,16 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
             ],
             brick_owners: [publicUser],
             bricks: [{
-                size: [10, 10, 2],
-                color: [63, 63, 63],
+                size: [10, 10, 4],
+                color: [25, 25, 25],
                 position: [0,0,0],
-			    //components: {
-				//	BCD_ItemSpawn: {
-				//		PickupClass: 'BP_ItemPickup_AssaultRifle',
-				//		PickupRespawnTime: 0,
-				//		PickupScale: 0.8,
-				//	}
-			    //}              
+			    components: {
+					BCD_ItemSpawn: {
+						PickupClass: 'BP_ItemPickup_AssaultRifle',
+						PickupRespawnTime: 0,
+						PickupScale: 0.8,
+					}
+			    }              
 			}]
 		};
 		let inputData = {offX: position[0], offY: position[1], offZ: position[3], quiet: true, correctPalette: true, correctCustom: false};
