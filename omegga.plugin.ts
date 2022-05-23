@@ -106,21 +106,23 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		let rarity = Math.floor(Math.random()*6);
 		let itemSize = 0;
 		let itemRarity = '';
-		let lightColor = [];
+		let lightColor = [0,0,0,0];
+		let lightBrightness = 0;
 		if (rarity < 3) {
 			itemSize = itemIndex[randomIndex].scale.common;
 			itemRarity = `<color="808080"><font="glacialindifference"><size="24">common</></></>`;
-			lightColor = [0,0,0,0];
 		}
 		else if (rarity < 5) {
 			itemSize = itemIndex[randomIndex].scale.rare;
 			itemRarity = `<color="0080FF"><font="glacialindifference"><size="24">rare</></></>`;
 			lightColor = [0,127,255,127];
+			lightBrightness = 40;
 		}
 		else {
 			itemSize = itemIndex[randomIndex].scale.legendary;
 			itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
 			lightColor = [255,90,25,255];
+			lightBrightness = 80;
 		}
 		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, size: ${itemSize}`);
 		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[randomIndex].name}</>`);
@@ -168,7 +170,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 					},
 					BCD_PointLight: {
 						bMatchBrickShape: false,
-						Brightness: 80,
+						Brightness: lightBrightness,
 						Radius: 50,
 						Color: lightColor,
 						bUseBrickColor: false,
