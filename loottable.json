@@ -106,8 +106,8 @@
 		"scale":
 		{
 			"common": 1.0,
-			"rare": 1.5,
-			"legendary": 2.0
+			"rare": 2.5,
+			"legendary": 4.0
 		}
 	},
 	
