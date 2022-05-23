@@ -1,7 +1,10 @@
 import type { OmeggaPlugin, OL, PS, PC } from 'omegga/plugin';
+import LootTable from './loottable.json';
 
 type Config = { foo: string };
 type Storage = { bar: string };
+
+
 
 export default class Plugin implements OmeggaPlugin<Config, Storage> {
   omegga: OL;
@@ -24,6 +27,14 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
       throw Error("minigameevents plugin is required for this to plugin")
     }
 	
+	let itemIndex = [];
+	let weightTotal = 0;
+	for (let i in LootTable) {
+		itemIndex.push(LootTable[i]);
+		weightTotal += LootTable[i].chanceWeight;
+	}
+	console.log(`loaded ${itemIndex.length} items with a weighttoal of ${weightTotal}`
+	
     this.omegga.on(
       'interact',
       async ({ player, position, brick_name, message }) => {
@@ -35,13 +46,17 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		
 		//save the location of this box
 		
+		//pick random item and rarity
+		const randomNumber = Math.random()*weightTotal;
+		for (let i = 0; randomNumber > 0; i++) {
+			randomNumber -= itemIndex[i].chanceWeight;
+		} //i is now the index of the item we got
 		
 		//load item spawn brick
 		const publicUser = {
             id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
             name: 'Generator',
         };
-		const randomSize = Math.random()*1.5 + 0.5
 		const save: WriteSaveObject = {
 			author: {
 				id: publicUser.id,
@@ -65,7 +80,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
                 position: [0,0,0],
 			    components: {
 					BCD_ItemSpawn: {
-						PickupClass: 'BP_ItemPickup_AssaultRifle',
+						PickupClass: itemIndex[i].pickup,
 						bPickupEnabled: true,
 						bPickupRespawnOnMinigameReset: true,
 					    PickupMinigameResetRespawnDelay: 0,
@@ -74,7 +89,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 					    PickupOffsetDirection: 4,
 					    PickupOffsetDistance: 0.5,
 					    PickupRotation: [0,0,0],
-					    PickupScale: randomSize,
+					    PickupScale: 1,
 					    bPickupAnimationEnabled: true,
 						PickupAnimationAxis: 2,
 						bPickupAnimationAxisLocal: false,
