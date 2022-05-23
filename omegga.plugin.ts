@@ -41,6 +41,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
             id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
             name: 'Generator',
         };
+		const randomSize = Math.random()*1.5 + 0.5
 		const save: WriteSaveObject = {
 			author: {
 				id: publicUser.id,
@@ -73,7 +74,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 					    PickupOffsetDirection: 4,
 					    PickupOffsetDistance: 0.5,
 					    PickupRotation: [0,0,0],
-					    PickupScale: 0.8,
+					    PickupScale: randomSize,
 					    bPickupAnimationEnabled: true,
 						PickupAnimationAxis: 2,
 						bPickupAnimationAxisLocal: false,
