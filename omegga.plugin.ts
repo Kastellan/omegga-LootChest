@@ -17,6 +17,8 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     this.store = store;
   }
 
+  let openBoxLocations = [];
+  
   async init() {
 	// Subscribe to the death events plugin
     const minigameEvents = await this.omegga.getPlugin('minigameevents')
@@ -26,7 +28,6 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     } else {
       throw Error("minigameevents plugin is required for this to plugin")
     }
-	let openBoxLocations = [];
 	
 	let itemIndex = [];
 	let weightTotal = 0;
