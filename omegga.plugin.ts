@@ -48,8 +48,8 @@ const lootBrick: WriteSaveObject = {
 			BCD_PointLight: {
 				bMatchBrickShape: false,
 			    Brightness: 80,
-			    Radius: 5,
-			    Color: [0,0,0,0],
+			    Radius: 50,
+			    Color: [1,1,1,1],
 			    bUseBrickColor: true,
 			    bCastShadows: false
 			}
