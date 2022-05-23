@@ -4,7 +4,7 @@ import LootTable from './loottable.json';
 type Config = { foo: string };
 type Storage = { bar: string };
 
-let openBoxLocations[]:any;
+
 
 export default class Plugin implements OmeggaPlugin<Config, Storage> {
   omegga: OL;
@@ -16,6 +16,8 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     this.config = config;
     this.store = store;
   }
+  
+  let openBoxLocations[]:any;
   
   async init() {
 	// Subscribe to the death events plugin
