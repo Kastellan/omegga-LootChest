@@ -5,6 +5,40 @@ type Config = { foo: string };
 type Storage = { bar: string };
 
 const openBoxLocations = [];
+const publicUser = {
+	id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
+	name: 'Generator',
+};
+const lootBrick: WriteSaveObject = {
+	author: {
+		id: publicUser.id,
+		name: 'TypeScript',
+	},
+	description: 'Noise Terrain',
+	map: 'brs-js example',
+	materials: [
+		'BMC_Plastic',
+		'BMC_Metallic',
+		'BMC_Glow',
+		'BMC_Glass',
+		'BMC_Hologram',
+		'BMC_Ghost',
+		'BMC_Ghost_Fail'
+	],
+	brick_owners: [publicUser],
+	bricks: [{
+		size: [10, 10, 10],
+		color: [100, 75, 5],
+		position: [0,0,0],
+		components: {
+			BCD_Interact: {
+			bPlayInteractSound: true,
+			Message: "",
+			ConsoleTag: `loot`     
+			}
+		}
+	}]
+};
 
 export default class Plugin implements OmeggaPlugin<Config, Storage> {
   omegga: OL;
@@ -42,11 +76,9 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         if (message !== 'loot') return;
 		const match = brick_name.match(/^2x Cube$/);
         if (!match) return;
-		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
-		
-		//save the location of this box
+		//save the location of this box and delete it
 		openBoxLocations.push(position);
-		
+		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
 		//pick random item and rarity
 		let randomNumber = Math.random()*weightTotal;
 		let randomIndex = 0;
@@ -72,10 +104,6 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, size: ${itemSize}`);
 		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[randomIndex].name}</>`);
 		//load item spawn brick
-		const publicUser = {
-            id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
-            name: 'Generator',
-        };
 		const save: WriteSaveObject = {
 			author: {
 				id: publicUser.id,
@@ -153,6 +181,9 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		  this.omegga.broadcast(`Who opened all these boxes?`)
 		  for (let i in openBoxLocations) {
 			  console.log(`box at ${openBoxLocations[i][0]}, ${openBoxLocations[i][1]}, ${openBoxLocations[i][2]}`);
+			  Omegga.writeln(`Bricks.ClearRegion ${openBoxLocations[i][0]} ${openBoxLocations[i][1]} ${openBoxLocations[i][2]} 10 10 10`);
+			  let inputData = {offX: openBoxLocations[i][0], offY: openBoxLocations[i][1], offZ: openBoxLocations[i][3], quiet: true, correctPalette: true, correctCustom: false};
+			  Omegga.loadSaveData(lootBrick,inputData);
 		  }
 		  openBoxLocations.length = 0;
 	  }
