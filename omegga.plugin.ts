@@ -41,7 +41,6 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         if (message !== 'loot') return;
 		const match = brick_name.match(/^2x Cube$/);
         if (!match) return;
-        Omegga.middlePrint(player.name,`You looted`);
 		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
 		
 		//save the location of this box
@@ -53,8 +52,23 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			randomNumber -= itemIndex[i].chanceWeight;
 			randomIndex = i
 		}
-		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}`);
-		
+		let rarity = Math.floor(Math.random()*6);
+		let itemSize = 0;
+		let itemRarity = '';
+		if (rarity < 3) {
+			itemSize = itemIndex[randomIndex].scale.common;
+			itemRarity = 'common';
+		}
+		else if (rarity < 5) {
+			itemSize = itemIndex[randomIndex].scale.rare;
+			itemRarity = 'rare';
+		}
+		else {
+			itemSize = itemIndex[randomIndex].scale.legendary;
+			itemRarity = 'legendary';
+		}
+		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, rarity: ${itemRarity} ${itemSize}`);
+
 		//load item spawn brick
 		const publicUser = {
             id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
@@ -92,7 +106,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 					    PickupOffsetDirection: 4,
 					    PickupOffsetDistance: 0.5,
 					    PickupRotation: [0,0,0],
-					    PickupScale: 1,
+					    PickupScale: itemSize,
 					    bPickupAnimationEnabled: true,
 						PickupAnimationAxis: 2,
 						bPickupAnimationAxisLocal: false,
