@@ -47,7 +47,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		//save the location of this box
 		
 		//pick random item and rarity
-		const randomNumber = Math.random()*weightTotal;
+		let randomNumber = Math.random()*weightTotal;
 		for (let i = 0; randomNumber > 0; i++) {
 			randomNumber -= itemIndex[i].chanceWeight;
 		} //i is now the index of the item we got
