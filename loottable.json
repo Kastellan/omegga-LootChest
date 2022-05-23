@@ -87,7 +87,7 @@
 	{
 		"id": "Flintlock",
 		"name": "Flintlock Pistol",
-		"pickup": "BP_ItemPickup_FlintlockPistol",
+		"pickup": "BP_ItemPickup_Flintlock",
 		"chanceWeight": 60,
 		"scale":
 		{
