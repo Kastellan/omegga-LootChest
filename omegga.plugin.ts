@@ -61,7 +61,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
             bricks: [{
                 size: [10, 10, 2],
                 color: [63, 63, 63],
-                position: [x,y,z],
+                position: [position[0],position[1],position[2]],
 			    components: {
 					BCD_ItemSpawn: {
 						PickupClass: 'BP_ItemPickup_AssaultRifle',
