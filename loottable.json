@@ -87,7 +87,7 @@
 	{
 		"id": "Flintlock",
 		"name": "Flintlock Pistol",
-		"pickup": "BP_ItemPickup_Flintlock",
+		"pickup": "BP_ItemPickup_Flintlock_Pistol",
 		"chanceWeight": 60,
 		"scale":
 		{
@@ -339,7 +339,7 @@
 	{
 		"id": "StandardSubmachineGun",
 		"name": "Submachine Gun",
-		"pickup": "BP_ItemPickup_SubmachineGun",
+		"pickup": "BP_ItemPickup_SubmachineGun_Unsuppressed",
 		"chanceWeight": 60,
 		"scale":
 		{
