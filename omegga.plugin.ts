@@ -150,7 +150,11 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
       this.omegga.broadcast(`${name} has reset.`);
 	  //change all the opened boxes back to closed boxes
 	  if (openBoxLocations.length != 0) {
-		  this.omegga.broadcast(`Who opened all these boxes`)
+		  this.omegga.broadcast(`Who opened all these boxes?`)
+		  for (let i in openBoxLocations) {
+			  console.log(`box at ${openBoxLocations[i][0]}, ${openBoxLocations[i][1]}, ${openBoxLocations[i][2]}`);
+		  }
+		  openBoxLocations = [];
 	  }
     }
   }
