@@ -48,10 +48,12 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		
 		//pick random item and rarity
 		let randomNumber = Math.random()*weightTotal;
+		let randomIndex = 0;
 		for (let i = 0; randomNumber > 0; i++) {
 			randomNumber -= itemIndex[i].chanceWeight;
-		} //i is now the index of the item we got
-		console.log(`index: ${i}`);
+			randomIndex = i
+		}
+		console.log(`index: ${randomIndex}`);
 		
 		//load item spawn brick
 		const publicUser = {
