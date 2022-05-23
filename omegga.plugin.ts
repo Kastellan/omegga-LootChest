@@ -65,6 +65,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			    components: {
 					BCD_ItemSpawn: {
 						PickupClass: 'BP_ItemPickup_AssaultRifle',
+						bPickupEnabled: true,
 						PickupRespawnTime: 0,
 						PickupScale: 0.8,
 					}
