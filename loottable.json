@@ -325,7 +325,7 @@
 	{
 		"id": "Sniper",
 		"name": "Sniper Rifle",
-		"pickup": "BP_ItemPickup_Sniper",
+		"pickup": "BP_ItemPickup_SniperRifle",
 		"chanceWeight": 60,
 		"scale":
 		{
@@ -339,7 +339,7 @@
 	{
 		"id": "StandardSubmachineGun",
 		"name": "Submachine Gun",
-		"pickup": "BP_ItemPickup_StandardSubmachineGun",
+		"pickup": "BP_ItemPickup_SubmachineGun",
 		"chanceWeight": 60,
 		"scale":
 		{
