@@ -148,7 +148,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			    }              
 			}]
 		};
-		let inputData = {offX: position[0], offY: position[1], offZ: position[3], quiet: true, correctPalette: true, correctCustom: false};
+		let inputData = {offX: position[0], offY: position[1], offZ: position[2], quiet: true, correctPalette: true, correctCustom: false};
         Omegga.loadSaveData(save,inputData);
       });
 
