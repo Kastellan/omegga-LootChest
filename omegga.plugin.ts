@@ -57,15 +57,15 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		let itemRarity = '';
 		if (rarity < 3) {
 			itemSize = itemIndex[randomIndex].scale.common;
-			itemRarity = `<color="808080"><font="glacialindifference">common</></>`;
+			itemRarity = `<color="808080"><font="glacialindifference"><size="24">common</></></>`;
 		}
 		else if (rarity < 5) {
 			itemSize = itemIndex[randomIndex].scale.rare;
-			itemRarity = `<color="0080FF"><font="glacialindifference">rare</></>`;
+			itemRarity = `<color="0080FF"><font="glacialindifference"><size="24">rare</></></>`;
 		}
 		else {
 			itemSize = itemIndex[randomIndex].scale.legendary;
-			itemRarity = `<color="FFC000"><font="glacialindifference"></b>LEGENDARY</></></>`;
+			itemRarity = `<color="FFC000"><font="glacialindifference"></b><size="32">LEGENDARY</></></></>`;
 		}
 		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, rarity: ${itemRarity} ${itemSize}`);
 		Omegga.middlePrint(player.name,`<size="24">You looted a</><br>${itemRarity}<br><size="24">${itemIndex[randomIndex].name}</>`);
