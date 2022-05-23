@@ -122,7 +122,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
             ],
             brick_owners: [publicUser],
             bricks: [{
-                size: [10, 10, 4],
+                size: [10, 10, 2],
                 color: [25, 25, 25],
                 position: [0,0,0],
 			    components: {
@@ -148,7 +148,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			    }              
 			}]
 		};
-		let inputData = {offX: position[0], offY: position[1], offZ: position[2], quiet: true, correctPalette: true, correctCustom: false};
+		let inputData = {offX: position[0], offY: position[1], offZ: (position[2] - 3), quiet: true, correctPalette: true, correctCustom: false};
         Omegga.loadSaveData(save,inputData);
       });
 
