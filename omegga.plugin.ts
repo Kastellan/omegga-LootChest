@@ -17,7 +17,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     this.store = store;
   }
   
-  let openBoxLocations[]:any;
+  const openBoxLocations = [];
   
   async init() {
 	// Subscribe to the death events plugin
