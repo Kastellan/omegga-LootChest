@@ -1,6 +1,6 @@
 import type { OmeggaPlugin, OL, PS, PC, _OMEGGA_UTILS_IMPORT } from 'omegga/plugin';
 import LootTable from './loottable.json';
-
+//testt
 type Config = { foo: string };
 type Storage = { bar: string };
 
@@ -28,7 +28,7 @@ const lootBrick: WriteSaveObject = {
 	brick_owners: [publicUser],
 	bricks: [{
 		size: [10, 10, 10],
-		color: [100, 33, 5],
+		color: [255, 64, 8],
 		material_index: 2,
 		position: [0,0,0],
 		components: {
@@ -207,6 +207,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     if (event === 'roundchange') {
       const [{ name }] = args;
       this.omegga.broadcast(`${name} has reset.`);
+	  if (name == 'GLOBAL') return;
 	  //change all the opened boxes back to closed boxes
 	  if (openBoxLocations.length != 0) {
 		  this.omegga.broadcast(`Who opened all these boxes?`)
