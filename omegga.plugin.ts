@@ -28,7 +28,7 @@ const lootBrick: WriteSaveObject = {
 	brick_owners: [publicUser],
 	bricks: [{
 		size: [10, 10, 10],
-		color: [100, 66, 5],
+		color: [100, 33, 5],
 		material_index: 2,
 		position: [0,0,0],
 		components: {
