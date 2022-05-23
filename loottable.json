@@ -102,7 +102,7 @@
 		"id": "HealthPotion",
 		"name": "Health Potion",
 		"pickup": "BP_ItemPickup_HealthPotion",
-		"chanceWeight": 600,
+		"chanceWeight": 300,
 		"scale":
 		{
 			"common": 1.0,
