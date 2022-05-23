@@ -26,6 +26,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     } else {
       throw Error("minigameevents plugin is required for this to plugin")
     }
+	let openBoxLocations = [];
 	
 	let itemIndex = [];
 	let weightTotal = 0;
@@ -44,6 +45,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
 		
 		//save the location of this box
+		openBoxLocations.push(position);
 		
 		//pick random item and rarity
 		let randomNumber = Math.random()*weightTotal;
@@ -67,7 +69,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			itemSize = itemIndex[randomIndex].scale.legendary;
 			itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
 		}
-		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, rarity: ${itemRarity} ${itemSize}`);
+		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, size: ${itemSize}`);
 		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[randomIndex].name}</>`);
 		//load item spawn brick
 		const publicUser = {
@@ -147,6 +149,9 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
       const [{ name }] = args;
       this.omegga.broadcast(`${name} has reset.`);
 	  //change all the opened boxes back to closed boxes
+	  if (openBoxLocations.length != 0) {
+		  this.omegga.broadcast(`Who opened all these boxes`)
+	  }
     }
   }
 }
