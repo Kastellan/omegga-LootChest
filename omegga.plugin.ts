@@ -53,7 +53,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			randomNumber -= itemIndex[i].chanceWeight;
 			randomIndex = i
 		}
-		console.log(`index: ${randomIndex}`);
+		console.log(`index: ${randomIndex}`, item: ${itemIndex[randomIndex].pickup});
 		
 		//load item spawn brick
 		const publicUser = {
@@ -83,7 +83,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
                 position: [0,0,0],
 			    components: {
 					BCD_ItemSpawn: {
-						PickupClass: itemIndex[i].pickup,
+						PickupClass: itemIndex[randomIndex].pickup,
 						bPickupEnabled: true,
 						bPickupRespawnOnMinigameReset: true,
 					    PickupMinigameResetRespawnDelay: 0,
