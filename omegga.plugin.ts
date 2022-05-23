@@ -65,10 +65,10 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		}
 		else {
 			itemSize = itemIndex[randomIndex].scale.legendary;
-			itemRarity = `<color="FFC000"><font="glacialindifference"></b><size="32">LEGENDARY</></></></>`;
+			itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
 		}
 		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, rarity: ${itemRarity} ${itemSize}`);
-		Omegga.middlePrint(player.name,`<size="24">You looted a</><br>${itemRarity}<br><size="24">${itemIndex[randomIndex].name}</>`);
+		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[randomIndex].name}</>`);
 		//load item spawn brick
 		const publicUser = {
             id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
