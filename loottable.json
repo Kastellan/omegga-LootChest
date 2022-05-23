@@ -25,6 +25,384 @@
 			"rare": 1.0,
 			"legendary": 1.2
 		}
+	},
+	
+	"Battleaxe":
+	{
+		"id": "Battleaxe",
+		"name": "Battle Axe",
+		"pickup": "BP_ItemPickup_Battleaxe",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2.0
+		}
+	},
+	
+	"Bow":
+	{
+		"id": "Bow",
+		"name": "Bow",
+		"pickup": "BP_ItemPickup_Bow",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2.0
+		}
+	},
+	
+	"BullpupR":
+	{
+		"id": "BullpupR",
+		"name": "Bullpup Rifle",
+		"pickup": "BP_ItemPickup_BullpupRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"BullpupS":
+	{
+		"id": "BullpupS",
+		"name": "Bullpup SMG",
+		"pickup": "BP_ItemPickup_BullpupSMG",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Flintlock":
+	{
+		"id": "Flintlock",
+		"name": "Flintlock Pistol",
+		"pickup": "BP_ItemPickup_FlintlockPistol",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2.0
+		}
+	},
+	
+	"HealthPotion":
+	{
+		"id": "HealthPotion",
+		"name": "Health Potion",
+		"pickup": "BP_ItemPickup_HealthPotion",
+		"chanceWeight": 600,
+		"scale":
+		{
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2.0
+		}
+	},
+	
+	"AK":
+	{
+		"id": "AK",
+		"name": "Classic Assault Rifle",
+		"pickup": "BP_ItemPickup_HeavyAssaultRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"HeavySMG":
+	{
+		"id": "HeavySMG",
+		"name": "Heavy SMG",
+		"pickup": "BP_ItemPickup_HeavySMG",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"HighPowerPistol":
+	{
+		"id": "HighPowerPistol",
+		"name": "High Power Pistol",
+		"pickup": "BP_ItemPickup_HighPowerPistol",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"HuntingShotgun":
+	{
+		"id": "HuntingShotgun",
+		"name": "Hunting Shotgun",
+		"pickup": "BP_ItemPickup_HuntingShotgun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"LeverActionRifle":
+	{
+		"id": "LeverActionRifle",
+		"name": "Lever Action Rifle",
+		"pickup": "BP_ItemPickup_LeverActionRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"LightMachineGun":
+	{
+		"id": "LightMachineGun",
+		"name": "Light Machine Gun",
+		"pickup": "BP_ItemPickup_LightMachineGun",
+		"chanceWeight": 30,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"LongSword":
+	{
+		"id": "LongSword",
+		"name": "Longsword",
+		"pickup": "BP_ItemPickup_LongSword",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 1.0,
+			"rare": 1.5,
+			"legendary": 2.0
+		}
+	},
+	
+	"MagnumPistol":
+	{
+		"id": "MagnumPistol",
+		"name": "Magnum Pistol",
+		"pickup": "BP_ItemPickup_MagnumPistol",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"MicroSMG":
+	{
+		"id": "MicroSMG",
+		"name": "Micro SMG",
+		"pickup": "BP_ItemPickup_MicroSMG",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Pistol":
+	{
+		"id": "Pistol",
+		"name": "Pistol",
+		"pickup": "BP_ItemPickup_Pistol",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Revolver":
+	{
+		"id": "Revolver",
+		"name": "Revolver",
+		"pickup": "BP_ItemPickup_Revolver",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"SemiAutoRifle":
+	{
+		"id": "SemiAutoRifle",
+		"name": "Semi Auto Rifle",
+		"pickup": "BP_ItemPickup_SemiAutoRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"ServiceRifle":
+	{
+		"id": "ServiceRifle",
+		"name": "Service Rifle",
+		"pickup": "BP_ItemPickup_ServiceRifle",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Shotgun":
+	{
+		"id": "Shotgun",
+		"name": "Shotgun",
+		"pickup": "BP_ItemPickup_Shotgun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"SlugShotgun":
+	{
+		"id": "SlugShotgun",
+		"name": "Slug Shotgun",
+		"pickup": "BP_ItemPickup_SlugShotgun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Sniper":
+	{
+		"id": "Sniper",
+		"name": "Sniper Rifle",
+		"pickup": "BP_ItemPickup_Sniper",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"StandardSubmachineGun":
+	{
+		"id": "StandardSubmachineGun",
+		"name": "Submachine Gun",
+		"pickup": "BP_ItemPickup_StandardSubmachineGun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"TacticalShotgun":
+	{
+		"id": "TacticalShotgun",
+		"name": "Tactical Shotgun",
+		"pickup": "BP_ItemPickup_TacticalShotgun",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"TacticalSMG":
+	{
+		"id": "TacticalSMG",
+		"name": "Tactical SMG",
+		"pickup": "BP_ItemPickup_TacticalSMG",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"Tomahawk":
+	{
+		"id": "Tomahawk",
+		"name": "Tomahawk",
+		"pickup": "BP_ItemPickup_Tomahawk",
+		"chanceWeight": 120,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
+	},
+	
+	"TypewriterSMG":
+	{
+		"id": "TypewriterSMG",
+		"name": "Typewriter SMG",
+		"pickup": "BP_ItemPickup_TypewriterSMG",
+		"chanceWeight": 60,
+		"scale":
+		{
+			"common": 0.8,
+			"rare": 1.0,
+			"legendary": 1.2
+		}
 	}
 }
 	
