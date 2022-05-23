@@ -1,6 +1,6 @@
 import type { OmeggaPlugin, OL, PS, PC, _OMEGGA_UTILS_IMPORT } from 'omegga/plugin';
 import LootTable from './loottable.json';
-//testt
+
 type Config = { foo: string };
 type Storage = { bar: string };
 
