@@ -36,7 +36,7 @@ const lootBrick: WriteSaveObject = {
 				bPlayInteractSound: true,
 				Message: "",
 				ConsoleTag: `loot`     
-			}
+			},
 			BCD_AudioEmitter: {
 				AudioDescriptor: 'BA_AMB_Component_Alarm_Scifi_Creepy',
 				VolumeMultiplier: 0.5,
@@ -44,7 +44,7 @@ const lootBrick: WriteSaveObject = {
 				InnerRadius: 64,
 				MaxDistance: 128,
 				bSpatialization: true
-			}
+			},
 			BCD_PointLight: {
 				bMatchBrickShape: false,
 			    Brightness: 80,
