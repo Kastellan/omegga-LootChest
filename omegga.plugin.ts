@@ -154,7 +154,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		  for (let i in openBoxLocations) {
 			  console.log(`box at ${openBoxLocations[i][0]}, ${openBoxLocations[i][1]}, ${openBoxLocations[i][2]}`);
 		  }
-		  openBoxLocations = [];
+		  openBoxLocations.length = 0;
 	  }
     }
   }
