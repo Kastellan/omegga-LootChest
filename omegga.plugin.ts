@@ -28,13 +28,30 @@ const lootBrick: WriteSaveObject = {
 	brick_owners: [publicUser],
 	bricks: [{
 		size: [10, 10, 10],
-		color: [100, 75, 5],
+		color: [100, 66, 5],
+		material_index: 2,
 		position: [0,0,0],
 		components: {
 			BCD_Interact: {
 				bPlayInteractSound: true,
 				Message: "",
 				ConsoleTag: `loot`     
+			}
+			BCD_AudioEmitter: {
+				AudioDescriptor: 'BA_AMB_Component_Alarm_Scifi_Creepy',
+				VolumeMultiplier: 0.5,
+				PitchMultiplier: 2,
+				InnerRadius: 64,
+				MaxDistance: 128,
+				bSpatialization: true
+			}
+			BCD_PointLight: {
+				bMatchBrickShape: false,
+			    Brightness: 80,
+			    Radius: 5,
+			    Color: [100,100,100],
+			    bUseBrickColor: true,
+			    bCastShadows: false
 			}
 		}
 	}]
