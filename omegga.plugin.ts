@@ -33,7 +33,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		itemIndex.push(LootTable[i]);
 		weightTotal += LootTable[i].chanceWeight;
 	}
-	console.log(`loaded ${itemIndex.length} items with a weighttoal of ${weightTotal}`
+	console.log(`loaded ${itemIndex.length} items with a weighttoal of ${weightTotal}`);
 	
     this.omegga.on(
       'interact',
