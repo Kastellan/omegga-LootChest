@@ -109,29 +109,35 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			randomNumber -= itemIndex[i].chanceWeight;
 			chosenIndex = i
 		}
-		let itemSize = 0;
+		let itemSize = 1;
 		let itemRarity = '';
 		let lightColor = [0,0,0,0];
 		let lightBrightness = 0;
-		let rarity = Math.floor(Math.random()*6);
-		if (rarity < 3) {
-			itemSize = itemIndex[chosenIndex].scale.common;
-			itemRarity = `<color="808080"><font="glacialindifference"><size="24">common</></></>`;
-		}
-		else if (rarity < 5) {
-			itemSize = itemIndex[chosenIndex].scale.rare;
-			itemRarity = `<color="0080FF"><font="glacialindifference"><size="24">rare</></></>`;
-			lightColor = [0,127,255,127];
-			lightBrightness = 40;
-		}
-		else {
-			itemSize = itemIndex[chosenIndex].scale.legendary;
-			itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
-			lightColor = [255,90,25,255];
-			lightBrightness = 80;
+		if (this.config["Use-Item-Rarities"]){
+			let rarity = Math.floor(Math.random()*6);
+			if (rarity < 3) {
+				itemSize = itemIndex[chosenIndex].scale.common;
+				itemRarity = `<color="808080"><font="glacialindifference"><size="24">common</></></>`;
+			}
+			else if (rarity < 5) {
+				itemSize = itemIndex[chosenIndex].scale.rare;
+				itemRarity = `<color="0080FF"><font="glacialindifference"><size="24">rare</></></>`;
+				lightColor = [0,127,255,127];
+				lightBrightness = 40;
+			}
+			else {
+				itemSize = itemIndex[chosenIndex].scale.legendary;
+				itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
+				lightColor = [255,90,25,255];
+				lightBrightness = 80;
+			}
 		}
 		console.log(`index: ${chosenIndex}, item: ${itemIndex[chosenIndex].pickup}, size: ${itemSize}`);
-		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[chosenIndex].name}</>`);
+		if (this.config["Use-Item-Rarities"]){
+			Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[chosenIndex].name}</>`);
+		} else {
+			Omegga.middlePrint(player.name,`<size="18">You looted a</><br><size="18">${itemIndex[chosenIndex].name}</>`);
+		}
 		//load item spawn brick
 		const save: WriteSaveObject = {
 			author: {

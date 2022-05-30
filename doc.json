@@ -13,11 +13,6 @@
 			"type": "boolean",
 			"default": true
 		},
-		"Enable-Lights": {
-			"description": "Rare and legendary spawns will have lights when opened",
-			"type": "boolean",
-			"default": true
-		},
 		"Debug-Text": {
 			"description": "Announces when loot chests are reset",
 			"type": "boolean",
