@@ -3,6 +3,8 @@ A typed safe plugin for [omegga](https://github.com/brickadia-community/omegga).
 
 Simple loot chests for all your item looting needs.
 
+Items spawn in rarity tiers of common (50% chance), rare (33% chance) and legendary (17% chance). An item's scale is based on it's rarity tier.
+
 ## Install
 `omegga install gh:Kastellan/LootChest`
 
@@ -15,6 +17,8 @@ To make a loot chest, create a 2x2 cube and give it an Interact component with t
 All chests respawn as a glowing gold cube (with a light and audio component). I suggest taking one of these and duping them to make your starting chests.
 
 Use /resetlootchests to reset all loot chests in the server (minigame independent).
+
+The loot table is located within loottable.json. You can add items, edit item spawn weight, and edit item scale by rarity tier.
 
 ## Known Issues
 - Only works with one minigame.
