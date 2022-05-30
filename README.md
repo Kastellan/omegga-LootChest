@@ -14,6 +14,8 @@ Add yourself to 'Authorized-Users' in config in order to use the /resetlootchest
 To make a loot chest, create a 2x2 cube and give it an Interact component with the 'Print to Console' field set to 'LootChest'.
 All chests respawn as a glowing gold cube (with a light and audio component). I suggest taking one of these and duping them to make your starting chests.
 
+Use /resetlootchests to reset all loot chests.
+
 ## Known Issues
 - Only works with one minigame.
 - A loot chest that gets deleted while opened will respawn (chests need to be deleted while closed to really get rid of them).
