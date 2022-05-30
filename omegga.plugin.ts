@@ -144,7 +144,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 				id: publicUser.id,
                 name: 'TypeScript',
             },
-            description: 'Noise Terrain',
+            description: 'Opened Chest',
             map: 'brs-js example',
             materials: [
                 'BMC_Plastic',
