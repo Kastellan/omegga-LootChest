@@ -189,7 +189,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         Omegga.loadSaveData(save,inputData);
       });
 
-    return {};
+    return { registeredCommands: ['resetlootchests'] };
   }
 
   async stop() {
