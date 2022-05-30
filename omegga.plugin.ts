@@ -32,7 +32,7 @@ const lootBrick: WriteSaveObject = {
 			BCD_Interact: {
 				bPlayInteractSound: true,
 				Message: "",
-				ConsoleTag: `loot`     
+				ConsoleTag: `LootChest`     
 			},
 			BCD_AudioEmitter: {
 				AudioDescriptor: 'BA_AMB_Component_Alarm_Scifi_Creepy',
@@ -96,7 +96,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
     this.omegga.on(
       'interact',
       async ({ player, position, brick_name, message }) => {
-        if (message !== 'loot') return;
+        if (message !== 'LootChest') return;
 		const match = brick_name.match(/^2x Cube$/);
         if (!match) return;
 		//save the location of this box and delete it
