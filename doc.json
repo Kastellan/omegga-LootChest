@@ -25,9 +25,11 @@
 		}
 	},
 	"commands": [
-		"name": "/resetlootchests",
-		"description": "Respawns all loot chests on the server. Authorized users only.",
-		"example": "/resetlootchests",
-		"args": []
+		{
+			"name": "/resetlootchests",
+			"description": "Respawns all loot chests on the server. Authorized users only.",
+			"example": "/resetlootchests",
+			"args": []
+		}
 	]
 }
