@@ -86,7 +86,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 	
 	this.omegga.on('cmd:resetlootchests', async (name) => {
 		if (this.config["Authorized-Users"].find(p => p.name == name)) {
-			resetLootCrates();
+			resetLootCrates(this);
 		}
 		else {
 			this.omegga.whisper(name, 'You do not have permission to use that command');
@@ -216,12 +216,12 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
       if (this.config["Debug-Text"]) this.omegga.broadcast(`${name} has reset.`);
 	  if (name == 'GLOBAL') return;
 	  //change all the opened boxes back to closed boxes
-	  resetLootCrates();
+	  resetLootCrates(this);
     }
   }
 }
 
-function resetLootCrates() { //change all the opened boxes back to closed boxes
+function resetLootCrates(this) { //change all the opened boxes back to closed boxes
   if (openBoxLocations.length != 0) {
 	  for (let i in openBoxLocations) { //delete the boxes
 		  let posX = openBoxLocations[i][0];
@@ -236,8 +236,8 @@ function resetLootCrates() { //change all the opened boxes back to closed boxes
 		  let posZ = openBoxLocations[i][2];
 		  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
 		  Omegga.loadSaveData(lootBrick,inputData);
-		  if (Plugin.config["Debug-Text"]) 
-		    Plugin.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
+		  if (this.config["Debug-Text"]) 
+		    this.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
 	  }
 	  openBoxLocations.length = 0;
   }
