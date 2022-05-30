@@ -219,26 +219,27 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 	  resetLootCrates(this);
     }
   }
+  
+  function resetLootCrates(this) { //change all the opened boxes back to closed boxes
+	  if (openBoxLocations.length != 0) {
+		  for (let i in openBoxLocations) { //delete the boxes
+			  let posX = openBoxLocations[i][0];
+			  let posY = openBoxLocations[i][1];
+			  let posZ = openBoxLocations[i][2];
+			  //console.log(`box at ${posX}, ${posY}, ${posZ}`);
+			  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
+		  }
+		  for (let i in openBoxLocations) { //regenerate the boxes
+			  let posX = openBoxLocations[i][0];
+			  let posY = openBoxLocations[i][1];
+			  let posZ = openBoxLocations[i][2];
+			  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
+			  Omegga.loadSaveData(lootBrick,inputData);
+			  if (this.config["Debug-Text"]) 
+				this.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
+		  }
+		  openBoxLocations.length = 0;
+	  }
+}
 }
 
-function resetLootCrates(this) { //change all the opened boxes back to closed boxes
-  if (openBoxLocations.length != 0) {
-	  for (let i in openBoxLocations) { //delete the boxes
-		  let posX = openBoxLocations[i][0];
-		  let posY = openBoxLocations[i][1];
-		  let posZ = openBoxLocations[i][2];
-		  //console.log(`box at ${posX}, ${posY}, ${posZ}`);
-		  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
-	  }
-	  for (let i in openBoxLocations) { //regenerate the boxes
-		  let posX = openBoxLocations[i][0];
-		  let posY = openBoxLocations[i][1];
-		  let posZ = openBoxLocations[i][2];
-		  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
-		  Omegga.loadSaveData(lootBrick,inputData);
-		  if (this.config["Debug-Text"]) 
-		    this.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
-	  }
-	  openBoxLocations.length = 0;
-  }
-}
