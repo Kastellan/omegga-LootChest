@@ -9,6 +9,8 @@ Items spawn in rarity tiers of common (50% chance), rare (33% chance) and legend
 `omegga install gh:Kastellan/LootChest`
 
 ## How To Use
+Requires [Aware's Minigame Events](https://github.com/mraware/omegga-minigameevents) (`omegga install gh:mraware/minigameevents`)
+
 Only works with ONE minigame. (Loot chests will respawn whenever ANY minigame restarts.)
 
 Add yourself to 'Authorized-Users' in config in order to use the /resetlootchests command.
