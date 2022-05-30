@@ -98,34 +98,34 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		Omegga.writeln(`Bricks.ClearRegion ${position[0]} ${position[1]} ${position[2]} 10 10 10`);
 		//pick random item and rarity
 		let randomNumber = Math.random()*weightTotal;
-		let randomIndex = 0;
+		let chosenIndex = 0;
 		for (let i = 0; randomNumber > 0; i++) {
 			randomNumber -= itemIndex[i].chanceWeight;
-			randomIndex = i
+			chosenIndex = i
 		}
-		let rarity = Math.floor(Math.random()*6);
 		let itemSize = 0;
 		let itemRarity = '';
 		let lightColor = [0,0,0,0];
 		let lightBrightness = 0;
+		let rarity = Math.floor(Math.random()*6);
 		if (rarity < 3) {
-			itemSize = itemIndex[randomIndex].scale.common;
+			itemSize = itemIndex[chosenIndex].scale.common;
 			itemRarity = `<color="808080"><font="glacialindifference"><size="24">common</></></>`;
 		}
 		else if (rarity < 5) {
-			itemSize = itemIndex[randomIndex].scale.rare;
+			itemSize = itemIndex[chosenIndex].scale.rare;
 			itemRarity = `<color="0080FF"><font="glacialindifference"><size="24">rare</></></>`;
 			lightColor = [0,127,255,127];
 			lightBrightness = 40;
 		}
 		else {
-			itemSize = itemIndex[randomIndex].scale.legendary;
+			itemSize = itemIndex[chosenIndex].scale.legendary;
 			itemRarity = `<color="FFC000"><font="glacialindifference"><b><size="32">LEGENDARY</></></></>`;
 			lightColor = [255,90,25,255];
 			lightBrightness = 80;
 		}
-		console.log(`index: ${randomIndex}, item: ${itemIndex[randomIndex].pickup}, size: ${itemSize}`);
-		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[randomIndex].name}</>`);
+		console.log(`index: ${chosenIndex}, item: ${itemIndex[chosenIndex].pickup}, size: ${itemSize}`);
+		Omegga.middlePrint(player.name,`<size="18">You looted a</><br>${itemRarity}<br><size="18">${itemIndex[chosenIndex].name}</>`);
 		//load item spawn brick
 		const save: WriteSaveObject = {
 			author: {
@@ -150,7 +150,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
                 position: [0,0,-8],
 			    components: {
 					BCD_ItemSpawn: {
-						PickupClass: itemIndex[randomIndex].pickup,
+						PickupClass: itemIndex[chosenIndex].pickup,
 						bPickupEnabled: true,
 						bPickupRespawnOnMinigameReset: true,
 					    PickupMinigameResetRespawnDelay: 0,
@@ -187,6 +187,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
   }
 
   async stop() {
+	openBoxLocations.length = 0;
     // Unsubscribe to the death events plugin
     const minigameEvents = await this.omegga.getPlugin('minigameevents')
     if (minigameEvents) {
@@ -210,12 +211,12 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 	  if (name == 'GLOBAL') return;
 	  //change all the opened boxes back to closed boxes
 	  if (openBoxLocations.length != 0) {
-		  this.omegga.broadcast(`Who opened all these boxes?`)
+		  let numBoxes = 0;
 		  for (let i in openBoxLocations) { //delete the boxes
 			  let posX = openBoxLocations[i][0];
 			  let posY = openBoxLocations[i][1];
 			  let posZ = openBoxLocations[i][2];
-			  console.log(`box at ${posX}, ${posY}, ${posZ}`);
+			  //console.log(`box at ${posX}, ${posY}, ${posZ}`);
 			  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
 		  }
 		  for (let i in openBoxLocations) { //regenerate the boxes
@@ -224,6 +225,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			  let posZ = openBoxLocations[i][2];
 			  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
 			  Omegga.loadSaveData(lootBrick,inputData);
+			  this.omegga.broadcast(`Respawned ${numBoxes} loot chests.`);
 		  }
 		  openBoxLocations.length = 0;
 	  }
