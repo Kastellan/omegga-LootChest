@@ -89,7 +89,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 			resetLootCrates();
 		}
 		else {
-			this.omegga.whisper(name, 'You do not have permission to use that command')'
+			this.omegga.whisper(name, 'You do not have permission to use that command');
 		}
 	});
 	
