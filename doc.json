@@ -1,7 +1,33 @@
 {
   "name": "LootChest",
-  "description": "Loot chests for looting chests perhaps",
+  "description": "Loot chests for looting items",
   "author": "Kastellan",
-  "config": {},
-  "commands": []
+  "config": {
+	"Authorized-Users": {
+	  "description": "For use of /resetlootchests",
+      "type": "players",
+      "default": []
+    },
+	"Use-Item-Rarities": {
+	  "description": "Let items spawn in common, rare, and legendary sizes",
+	  "type": "boolean",
+	  "default": true
+	},
+	"Enable-Lights": {
+	  "description": "Rare and legendary spawns will have lights when opened",
+	  "type": "boolean",
+	  "default": true
+	},
+	"Debug-Text": {
+	  "description": "Announces when loot chests are reset",
+	  "type": "boolean",
+	  "default": false
+	}
+  },
+  "commands": [
+	"name": "/resetlootchests",
+    "description": "Respawns all loot chests on the server. Authorized users only.",
+    "example": "/resetlootchests",
+    "args": []
+  ]
 }

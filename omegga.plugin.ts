@@ -1,9 +1,6 @@
 import type { OmeggaPlugin, OL, PS, PC, _OMEGGA_UTILS_IMPORT } from 'omegga/plugin';
 import LootTable from './loottable.json';
 
-type Config = { foo: string };
-type Storage = { bar: string };
-
 const openBoxLocations = [];
 const publicUser = {
 	id: 'ffffffff-ffff-ffff-ffff-ffffffffffff',
@@ -14,7 +11,7 @@ const lootBrick: WriteSaveObject = {
 		id: publicUser.id,
 		name: 'TypeScript',
 	},
-	description: 'Noise Terrain',
+	description: 'Loot Chest',
 	map: 'brs-js example',
 	materials: [
 		'BMC_Plastic',
@@ -70,7 +67,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 
   
   async init() {
-	// Subscribe to the death events plugin
+	// Subscribe to the minigame events plugin
     const minigameEvents = await this.omegga.getPlugin('minigameevents')
     if (minigameEvents) {
       console.log('subscribing to minigameevents')
@@ -86,6 +83,15 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
 		weightTotal += LootTable[i].chanceWeight;
 	}
 	console.log(`loaded ${itemIndex.length} items with a weighttoal of ${weightTotal}`);
+	
+	this.omegga.on('cmd:resetlootchests', async (name) => {
+		if (this.config["Authorized-Users"].find(p => p.name == name)) {
+			resetLootCrates();
+		}
+		else {
+			this.omegga.whisper(name, 'You do not have permission to use that command')'
+		}
+	});
 	
     this.omegga.on(
       'interact',
@@ -200,35 +206,39 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
   
   async pluginEvent(event: string, from: string, ...args: any[]) {
     //console.log(event, from, args)
-    if (event === 'roundend') {
-      const [{ name }] = args;
-      this.omegga.broadcast(`${name} has ended.`)
-    }
+    //if (event === 'roundend') {
+    //  const [{ name }] = args;
+    //  this.omegga.broadcast(`${name} has ended.`)
+    //}
 
     if (event === 'roundchange') {
       const [{ name }] = args;
-      this.omegga.broadcast(`${name} has reset.`);
+      if (this.config["Debug-Text"]) this.omegga.broadcast(`${name} has reset.`);
 	  if (name == 'GLOBAL') return;
 	  //change all the opened boxes back to closed boxes
-	  if (openBoxLocations.length != 0) {
-		  let numBoxes = 0;
-		  for (let i in openBoxLocations) { //delete the boxes
-			  let posX = openBoxLocations[i][0];
-			  let posY = openBoxLocations[i][1];
-			  let posZ = openBoxLocations[i][2];
-			  //console.log(`box at ${posX}, ${posY}, ${posZ}`);
-			  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
-		  }
-		  for (let i in openBoxLocations) { //regenerate the boxes
-			  let posX = openBoxLocations[i][0];
-			  let posY = openBoxLocations[i][1];
-			  let posZ = openBoxLocations[i][2];
-			  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
-			  Omegga.loadSaveData(lootBrick,inputData);
-			  this.omegga.broadcast(`Respawned ${numBoxes} loot chests.`);
-		  }
-		  openBoxLocations.length = 0;
-	  }
+	  resetLootCrates();
     }
+  }
+}
+
+function resetLootCrates() { //change all the opened boxes back to closed boxes
+  if (openBoxLocations.length != 0) {
+	  for (let i in openBoxLocations) { //delete the boxes
+		  let posX = openBoxLocations[i][0];
+		  let posY = openBoxLocations[i][1];
+		  let posZ = openBoxLocations[i][2];
+		  //console.log(`box at ${posX}, ${posY}, ${posZ}`);
+		  Omegga.writeln(`Bricks.ClearRegion ${posX} ${posY} ${posZ} 10 10 10`);
+	  }
+	  for (let i in openBoxLocations) { //regenerate the boxes
+		  let posX = openBoxLocations[i][0];
+		  let posY = openBoxLocations[i][1];
+		  let posZ = openBoxLocations[i][2];
+		  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
+		  Omegga.loadSaveData(lootBrick,inputData);
+		  if (this.config["Debug-Text"]) 
+		    this.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
+	  }
+	  openBoxLocations.length = 0;
   }
 }
