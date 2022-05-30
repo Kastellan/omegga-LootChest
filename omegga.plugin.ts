@@ -236,8 +236,8 @@ function resetLootCrates() { //change all the opened boxes back to closed boxes
 		  let posZ = openBoxLocations[i][2];
 		  let inputData = {offX: posX, offY: posY, offZ: posZ, quiet: true, correctPalette: true, correctCustom: false};
 		  Omegga.loadSaveData(lootBrick,inputData);
-		  if (this.config["Debug-Text"]) 
-		    this.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
+		  if (Plugin.config["Debug-Text"]) 
+		    Plugin.omegga.broadcast(`Respawned ${openBoxLocations.length} loot chests.`);
 	  }
 	  openBoxLocations.length = 0;
   }
